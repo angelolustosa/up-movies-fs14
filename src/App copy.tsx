@@ -1,21 +1,23 @@
 import { useState } from "react"
 
 function App() {
-  const [fields, setFields] = useState({
-    titulo: '',
-    sinopse: 'O filme é de se c..ar',
-    votos: ''
-  })
+  const [titulo, setTitulo] = useState('')
+  const [sinopse, setSinopse] = useState('')
 
   const adicionar = event => {
     // evita que a página seja recarregada
     event.preventDefault()
-    console.log('add', fields);
+    console.log('add', titulo, sinopse);
   }
 
   const atualizaInput = event => {
-    console.log(event.target.id)
-    setFields({ ...fields, [event.target.id]: event.target.value })
+    console.log('atualizando', event.target.value);
+    setTitulo(event.target.value)
+  }
+
+  const atualizaSinopse = event => {
+    console.log('atualizando', event.target.value);
+    setSinopse(event.target.value)
   }
 
 
@@ -30,8 +32,9 @@ function App() {
               id='titulo'
               type="text"
               className="form-control"
-              value={fields.titulo}
-              onChange={atualizaInput}
+              value={titulo}
+              //onChange={atualizaInput}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
           <div className="col-md-12">
@@ -40,19 +43,15 @@ function App() {
               id="sinopse"
               type="text"
               className="form-control"
-              value={fields.sinopse}
-              onChange={atualizaInput}
+              value={sinopse}
+              //onChange={atualizaSinopse}
+              onChange={(e) => setSinopse(e.target.value)}
+
             />
           </div>
           <div className="col-md-12">
-            <label htmlFor="votos" className="form-label">Votos</label>
-            <input
-              id="votos"
-              type="text"
-              className="form-control"
-              value={fields.votos}
-              onChange={atualizaInput}
-            />
+            <label htmlFor="" className="form-label">Votos</label>
+            <input type="text" className="form-control" />
           </div>
 
           <button className="btn btn-primary" onClick={adicionar}>Adicionar</button>
