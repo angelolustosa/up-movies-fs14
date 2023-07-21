@@ -22,7 +22,7 @@ function App() {
 
   const enviar = event => {
     event.preventDefault()
-    console.log('enviar')
+    console.log('enviar', fields)
   }
 
   const limpar = event => {
@@ -36,7 +36,12 @@ function App() {
       <div className="container">
         <h2 className="mt-3 mb-3">Cadastro de Filmes</h2>
         <form className="row g-3" onSubmit={enviar}>
-          <InputForm nome='Título' width={10} />
+          <InputForm
+            nome='Título'
+            width={10}
+            value={fields.titulo}
+            change={atualizaInput}
+          />
           <InputForm nome='Gênero' width={2} />
           <InputForm nome='Diretor' width={6} />
           <InputForm nome='Sinopse' width={2} />
@@ -47,7 +52,7 @@ function App() {
               tipo={'submit'}
               nome='Enviar'
               width={1}
-              //click={enviar}
+            //click={enviar}
             />
             <Button
               tipo={'reset'}

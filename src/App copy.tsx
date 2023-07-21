@@ -33,7 +33,6 @@ function App() {
               type="text"
               className="form-control"
               value={titulo}
-              //onChange={atualizaInput}
               onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
